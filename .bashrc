@@ -122,6 +122,7 @@ function build() {
 	bld_linux_mak="/home/leo/Sandbox/zoe-games-src/linux.mak"
 
 	local input="$1"
+	local pgb="$2"
 	
 	# Checa formatacao do input (NomedoJogo_res)
 	if [[ ! "$input" =~ ^[A-Za-z]+_[0-9]+$ ]]; then
@@ -150,8 +151,13 @@ function build() {
 	cp "$path/camaro.cc" "$bld_camaro"
 	cp "$path/linux.mak" "$bld_linux_mak"
 
+	# Descomenta o pgb se tiver a flag
+	if [[ "$pgb" == "pgb" ]]; then
+		sed -i 's/#P_CCC_DEFINES += ___PGB___/P_CCC_DEFINES += ___PGB___/' "$bld_linux_mak"
+		sed -i 's/#P_CC_DEFINES +=  ___PGB___/P_CC_DEFINES +=  ___PGB___/' "$bld_linux_mak"
+	fi
+
 	cd /home/leo/Sandbox/zoe-games-src && echo "git status" && sleep 2 && cd /home/leo/Sandbox/zoe-games-src/programs/camaro
 
 	echo "bld clean_all" && echo -e "**Compilando**\nJogo: $jogo\nRes: $res" && sleep 2 && echo "bld"
 }
-
