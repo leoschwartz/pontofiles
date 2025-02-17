@@ -1,2 +1,15 @@
 //@theme "/usr/share/rofi/themes/iggy.rasi"
-@theme "/usr/share/rofi/themes/purple.rasi"
+//@theme "/usr/share/rofi/themes/purple.rasi"
+
+configuration {
+    show-icons: true;
+
+    display-ssh:    "󰣀 ssh:";
+    display-run:    "󱓞 run:";
+    display-drun:   "󰣖 drun:";
+    display-window: "󱂬 window:";
+    display-combi:  "󰕘 combi:";
+    display-filebrowser: "󰉋 filebrowser:";
+}
+
+@theme "~/.config/rofi/catppuccin-lavrent-mocha.rasi"
